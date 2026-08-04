@@ -1,0 +1,5 @@
+LOLBin forensic experiment
+Action class: A2
+File version: 1.0
+Purpose: Benign controlled download test
+No executable content
