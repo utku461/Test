@@ -1,0 +1,75 @@
+<?XML version="1.0"?>
+
+<scriptlet>
+
+<registration
+    description="A2 Regsvr32 Test"
+    progid="A2_Regsvr32"
+    version="1.00"
+    classid="{C6708908-8337-472F-BD20-23B8B3EA4269}"
+>
+
+<script language="JScript">
+<![CDATA[
+
+// Commit-spezifische URL der festgelegten Referenzdatei.
+var sourceUrl =
+    "https://raw.githubusercontent.com/utku461/Test/51825ebe3d485e3cf877d09c04deb9914900a81a/testfiles/a2_download_test_v1.txt";
+
+// Einheitlicher Zielpfad fuer die A2-Testhandlung.
+var destinationFile =
+    "C:\\Lab\\Outputs\\A2\\a2_download_test_v1.txt";
+
+try {
+
+    // Synchroner HTTPS-Abruf der festgelegten Referenzdatei.
+    var request =
+        new ActiveXObject("WinHttp.WinHttpRequest.5.1");
+
+    request.Open(
+        "GET",
+        sourceUrl,
+        false
+    );
+
+    request.Send();
+
+    // Nur HTTP 200 wird als erfolgreicher Abruf akzeptiert.
+    if (request.Status != 200) {
+        throw new Error(
+            "HTTP-Status: " + request.Status
+        );
+    }
+
+    // Die empfangenen Daten werden unveraendert gespeichert.
+    var stream =
+        new ActiveXObject("ADODB.Stream");
+
+    stream.Type = 1;
+    stream.Open();
+    stream.Write(request.ResponseBody);
+
+    stream.SaveToFile(
+        destinationFile,
+        2
+    );
+
+    stream.Close();
+
+    // Die heruntergeladene Datei wird nicht ausgefuehrt
+    // und nicht installiert.
+}
+catch (e) {
+
+    // Das Run-Skript erkennt einen Fehlschlag anhand einer
+    // fehlenden Download-Datei. Die Hashpruefung erfolgt
+    // spaeter auf dem Hostsystem.
+}
+
+]]>
+
+</script>
+
+</registration>
+
+</scriptlet>

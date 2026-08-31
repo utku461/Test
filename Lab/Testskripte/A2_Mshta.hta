@@ -1,0 +1,78 @@
+<html>
+<head>
+
+<hta:application
+    applicationname="A2_Mshta"
+    showintaskbar="no"
+    windowstate="minimize"
+    border="none"
+    caption="no"
+/>
+
+<script language="JScript">
+
+// Commit-spezifische URL der festgelegten Referenzdatei.
+var sourceUrl =
+    "https://raw.githubusercontent.com/utku461/Test/51825ebe3d485e3cf877d09c04deb9914900a81a/testfiles/a2_download_test_v1.txt";
+
+// Einheitlicher Zielpfad fuer alle A2-Testprozeduren.
+var destinationFile =
+    "C:\\Lab\\Outputs\\A2\\a2_download_test_v1.txt";
+
+try {
+
+    // Die Datei wird synchron ueber HTTPS abgerufen.
+    var request =
+        new ActiveXObject("WinHttp.WinHttpRequest.5.1");
+
+    request.Open(
+        "GET",
+        sourceUrl,
+        false
+    );
+
+    request.Send();
+
+    // Nur eine erfolgreiche HTTP-Antwort wird weiterverarbeitet.
+    if (request.Status != 200) {
+        throw new Error(
+            "HTTP-Status: " + request.Status
+        );
+    }
+
+    // ADODB.Stream speichert die empfangenen Binaerdaten
+    // unveraendert am festgelegten Zielpfad.
+    var stream =
+        new ActiveXObject("ADODB.Stream");
+
+    stream.Type = 1;
+    stream.Open();
+    stream.Write(request.ResponseBody);
+
+    // 2 bedeutet, dass eine vorhandene Datei ueberschrieben wuerde.
+    // Im spaeteren Experiment startet jeder Run jedoch von einem
+    // sauberen Snapshot, sodass dort keine Zieldatei vorhanden ist.
+    stream.SaveToFile(
+        destinationFile,
+        2
+    );
+
+    stream.Close();
+
+    // Die heruntergeladene Datei wird weder geoeffnet noch ausgefuehrt.
+    window.close();
+}
+catch (e) {
+
+    // Bei einem Fehler wird die HTA beendet.
+    // Das Run-Skript erkennt anschliessend, dass die erwartete
+    // Download-Datei nicht vorhanden ist.
+    window.close();
+}
+
+</script>
+
+</head>
+<body>
+</body>
+</html>

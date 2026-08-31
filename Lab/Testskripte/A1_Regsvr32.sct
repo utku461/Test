@@ -1,0 +1,51 @@
+<?XML version="1.0"?>
+
+<scriptlet>
+
+<registration
+    description="A1 Regsvr32 Test"
+    progid="A1_Regsvr32"
+    version="1.00"
+    classid="{514D99EE-A6B3-4D2F-809B-B4742F53DBA7}"
+>
+
+<script language="JScript">
+<![CDATA[
+
+// Festgelegter Pfad der A1-Ergebnisdatei.
+var resultFile =
+    "C:\\Lab\\Outputs\\A1\\A1_Regsvr32_Result.txt";
+
+try {
+
+    // Die Ergebnisdatei dient als funktionaler Nachweis,
+    // dass die A1-Testhandlung ausgefuehrt wurde.
+    var fso =
+        new ActiveXObject("Scripting.FileSystemObject");
+
+    var file =
+        fso.CreateTextFile(
+            resultFile,
+            true
+        );
+
+    file.WriteLine("ActionClass=A1");
+    file.WriteLine("Component=regsvr32.exe");
+    file.WriteLine("Result=SUCCESS");
+
+    file.Close();
+}
+catch (e) {
+
+    // Es werden keine weiteren Prozesse zur Fehlerbehandlung
+    // gestartet. Das Run-Skript erkennt einen Fehlschlag anhand
+    // der fehlenden oder unvollstaendigen Ergebnisdatei.
+}
+
+]]>
+
+</script>
+
+</registration>
+
+</scriptlet>

@@ -1,0 +1,50 @@
+<html>
+<head>
+
+<hta:application
+    applicationname="A1_Mshta"
+    showintaskbar="no"
+    windowstate="minimize"
+    border="none"
+    caption="no"
+/>
+
+<script language="JScript">
+
+// Festgelegter Pfad der A1-Ergebnisdatei.
+var resultFile = "C:\\Lab\\Outputs\\A1\\A1_Mshta_Result.txt";
+
+try {
+
+    // FileSystemObject wird verwendet, um die Referenzdatei zu erzeugen.
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+
+    var file = fso.CreateTextFile(
+        resultFile,
+        true
+    );
+
+    // Die Datei dient als Nachweis fuer die erfolgreiche A1-Testhandlung.
+    file.WriteLine("ActionClass=A1");
+    file.WriteLine("Component=mshta.exe");
+    file.WriteLine("Result=SUCCESS");
+
+    file.Close();
+
+    // Nach Abschluss der Testhandlung wird die HTA beendet.
+    window.close();
+}
+catch (e) {
+
+    // Bei einem Fehler wird die HTA ebenfalls beendet.
+    // Die fehlende oder unvollstaendige Ergebnisdatei wird
+    // anschliessend durch das Run-Skript erkannt.
+    window.close();
+}
+
+</script>
+
+</head>
+<body>
+</body>
+</html>
