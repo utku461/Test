@@ -1,6 +1,0 @@
-Algorithm       Hash                                                                   Path                                                                                                   
----------       ----                                                                   ----                                                                                                   
-SHA256          3C878AFA24740296D3D060E53D639AB0E7A277353CCCA0B10403716B71630758       C:\Lab\TestFiles\Regsvr32\A1_Regsvr32.sct                                                              
-SHA256          186AE77009A786B128691F696D5F72CE9306D98EDD483274A63AB2F58C5AB43B       C:\Lab\TestFiles\Regsvr32\A2_Regsvr32.sct                                                              
-SHA256          4E825A60A7789667FCEE463F729C6F0DDAD6F98887BECCF1DEF6B919EEEEB8A4       C:\Lab\RunScripts\Regsvr32\Run_Regsvr32_A1.cmd                                                         
-SHA256          43523C532CDF5E92731A4911AE995F86EB0FC2290E03DBBDFBEA875E2534C752       C:\Lab\RunScripts\Regsvr32\Run_Regsvr32_A2.cmd   
