@@ -1,1 +1,3 @@
-
+Die Dateien in diesem Verzeichnis enthalten die vollständigen Auswertungen der sieben untersuchten Artefaktquellen sowie die daraus gebildete Gesamtmatrix. Jede Einzeldatei umfasst die jeweilige Rohdatenbasis, die 
+run-spezifische Bewertung der 72 Experimentläufe und die aggregierten Ergebnisse mit Detection Reliability sowie K/T/U/A/H. Die Datei Gesamtmatrix_Artefaktmatrix.xlsx führt die Ergebnisse aller sieben Artefaktquellen 
+für die 24 Versuchskombinationen zusammen.
