@@ -1,1 +1,3 @@
-
+Die RunTabelle.xlsx dokumentiert die 72 final ausgewerteten Experimentläufe der Hauptuntersuchung. Enthalten sind unter anderem Run-ID, Komponente, Aktionsklasse, Logging-Profil, Wiederholung, Zeitstempel, Exit Code sowie 
+Angaben zum Ausführungs- und Erhebungsstatus. Zusätzlich ist der ursprünglich unvollständig erhobene Datensatz MSHTA-A2-P2-R01_INCOMPLETE zu Dokumentationszwecken enthalten, wurde jedoch nicht in die Artefaktauswertung
+einbezogen.
