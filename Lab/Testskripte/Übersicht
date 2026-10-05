@@ -1,0 +1,9 @@
+Dieses Verzeichnis enthält die acht Run-Skripte zur standardisierten Durchführung der Experimentläufe. Für die Komponenten PowerShell, Cscript, Mshta und Regsvr32 liegt jeweils ein Skript für die Aktionsklassen A1 und A2 vor.
+Die Run-Skripte starten die zugehörigen lokalen Testskripte und dokumentieren den Ablauf sowie die anschließende funktionale Kontrolle.
+
+Die Run-ID wird beim Aufruf als Parameter übergeben. Das Laufprotokoll wird unter `C:\Lab\RunLogs\<Run-ID>.txt` gespeichert und enthält unter anderem Komponente, Aktionsklasse, Computer- und Benutzername, Testdateipfad, 
+Befehlszeile, Start- und Prozessendzeitpunkt, Exitcode sowie das Ergebnis der Kontrolle.
+
+Bei A1 werden die Existenz der erzeugten Ergebnisdatei und die erwarteten Kennzeichnungen geprüft. Bei A2 wird zunächst die Existenz der heruntergeladenen Referenzdatei kontrolliert. Für PowerShell, Cscript und Mshta wird 
+zusätzlich ein Exitcode von 0 vorausgesetzt. Bei Regsvr32 beruht die Erfolgsentscheidung auf der Ergebnisdatei; der Exitcode wird unabhängig davon dokumentiert. Die SHA-256-Prüfung der A2-Datei erfolgt nach der KAPE-Erhebung 
+auf dem Hostsystem und wird im Laufprotokoll zunächst als ausstehend gekennzeichnet.
