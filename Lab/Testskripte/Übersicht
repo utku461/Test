@@ -1,9 +1,10 @@
-Dieses Verzeichnis enthält die acht Run-Skripte zur standardisierten Durchführung der Experimentläufe. Für die Komponenten PowerShell, Cscript, Mshta und Regsvr32 liegt jeweils ein Skript für die Aktionsklassen A1 und A2 vor.
-Die Run-Skripte starten die zugehörigen lokalen Testskripte und dokumentieren den Ablauf sowie die anschließende funktionale Kontrolle.
+Dieses Verzeichnis enthält die acht Testskripte, welche die kontrollierten Testhandlungen der Experimentläufe umsetzen. Für die Komponenten PowerShell, Cscript, Mshta und Regsvr32 liegt jeweils eine Variante für die 
+Aktionsklassen A1 und A2 vor. Die Ausführung erfolgt über die zugehörigen Run-Skripte im Verzeichnis `Lab/Runskripte`. Regsvr32 führt die lokalen Scriptlet-Dateien über `scrobj.dll` aus.
 
-Die Run-ID wird beim Aufruf als Parameter übergeben. Das Laufprotokoll wird unter `C:\Lab\RunLogs\<Run-ID>.txt` gespeichert und enthält unter anderem Komponente, Aktionsklasse, Computer- und Benutzername, Testdateipfad, 
-Befehlszeile, Start- und Prozessendzeitpunkt, Exitcode sowie das Ergebnis der Kontrolle.
+Die Aktionsklasse A1 umfasst die lokale Erzeugung einer komponentenspezifischen Ergebnisdatei unter `C:\Lab\Outputs\A1`. Diese enthält die Kennzeichnungen `ActionClass=A1`, die ausführende Komponente und `Result=SUCCESS`. 
+Die Datei dient der funktionalen Kontrolle der Testhandlung.
 
-Bei A1 werden die Existenz der erzeugten Ergebnisdatei und die erwarteten Kennzeichnungen geprüft. Bei A2 wird zunächst die Existenz der heruntergeladenen Referenzdatei kontrolliert. Für PowerShell, Cscript und Mshta wird 
-zusätzlich ein Exitcode von 0 vorausgesetzt. Bei Regsvr32 beruht die Erfolgsentscheidung auf der Ergebnisdatei; der Exitcode wird unabhängig davon dokumentiert. Die SHA-256-Prüfung der A2-Datei erfolgt nach der KAPE-Erhebung 
-auf dem Hostsystem und wird im Laufprotokoll zunächst als ausstehend gekennzeichnet.
+Die Aktionsklasse A2 umfasst den HTTPS-Abruf der Referenzdatei `a2_download_test_v1.txt` und deren Speicherung unter `C:\Lab\Outputs\A2\a2_download_test_v1.txt`. Alle vier A2-Testskripte verwenden dieselbe, an einen 
+festen Git-Commit gebundene Quell-URL. Die heruntergeladene Datei enthält ausschließlich Testtext und wird nicht ausgeführt. Ihre Integrität wird nach der KAPE-Erhebung auf dem Hostsystem mittels SHA-256 geprüft.
+
+Die Testskripte setzen die im Code festgelegten lokalen Verzeichnisse voraus. Im Laborsystem werden sie unter `C:\Lab\TestFiles` in den jeweiligen Komponentenunterordnern abgelegt.
